@@ -69,7 +69,6 @@ const App: React.FC = () => {
 
   const handleAdd = (e: React.FormEvent) => {
     e.preventDefault();
-
     setTodos([...todos, {id: Date.now(), todo, isDone: false}])
     console.log(todos);
     setTodo("");

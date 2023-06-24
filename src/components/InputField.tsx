@@ -14,16 +14,31 @@ const InputField : React.FC<Props> = ({todo, setTodo, handleAdd}) =>{
     const inputRef = useRef<HTMLInputElement>(null);
     
     return(
-        <form className='input' onSubmit={(e) =>{
+        <form 
+        
+        style={{ display: "flex", justifyContent: "space-around",  alignItems: "center", gap: "10px"
+     }}
+        
+        className='input'
+        
+        onSubmit={(e) =>{
         handleAdd(e);
         inputRef.current?.blur();
         }}>
-             <input type="input"
+             <input 
+              type="input"
               ref={inputRef}
               value={todo}
               onChange={(e) => setTodo(e.target.value)}
-             placeholder='Enter a task' className=''/>
-             <button> Go </button>
+              placeholder='Enter a task' 
+              className='' 
+            style={{width: "300px", height:"30px", borderRadius: "5px", }}
+              />
+
+             <button 
+            style={{borderRadius: "50%", width:"40px", height:"40px",}}
+             > Go </button>
+
         </form>
     )
 }
