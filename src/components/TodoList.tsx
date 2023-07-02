@@ -1,6 +1,7 @@
 import React from 'react';
 import { Todo } from '../modals/todo';
 import SingleTodo from './SingleTodo';
+import './styles/todoList.css';
 
 interface Props {
     todos: Todo[];
@@ -10,22 +11,36 @@ interface Props {
 
 const TodoList: React.FC<Props> = ({todos, setTodos})=> {
     return(
-        <div className='todos'>
-            <div style={{display: "flex", justifyContent:'space-evenly', width: '90%', flexWrap: "wrap" , padding: "20px"}}>
-            {todos.map((todo, index) =>{
-               return(
-
+       <div className='container' >
+          <div className='todos'>
+            <span className='todos_heading'>Active Tasks</span> 
+            {
+            todos.map((todo)=>(
                 <SingleTodo
-                 todo={todo} 
-                 todos={todos}
-                 setTodos={setTodos}
+                  todo={todo}
+                  todos={todos}
+                  setTodos={setTodos}
+                  key={todo.id}
                 />
-                 //   <li key={index}>{todo.todo}</li>
-            )
-              })}
-            </div>
-          
-        </div>
+            ))
+            }
+          </div>
+
+          <div className="todo_remove">
+          <span className='todos_heading'>Completed Tasks</span> 
+            {
+            todos.map((todo)=>(
+                <SingleTodo
+                  todo={todo}
+                  todos={todos}
+                  setTodos={setTodos}
+                  key={todo.id}
+                />
+            ))
+            }
+          </div>
+
+       </div>
     )
 }
 
